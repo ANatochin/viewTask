@@ -19,17 +19,17 @@ class User
             return $this->someUsers;
     }
 
-    public function getAddresses(): array
-    {
-        $address =[];
-        foreach ($this->getUser() as $list){
-            foreach ($list as $value){
-                unset($value['age']);
-                array_push($address,$value);
-            }
-        }
-        return $address;
-    }
+//    public function getAddresses(): array
+//    {
+//        $address =[];
+//        foreach ($this->getUser() as $list){
+//            foreach ($list as $value){
+//                unset($value['age']);
+//                array_push($address,$value);
+//            }
+//        }
+//        return $address;
+//    }
 
 
 

@@ -11,9 +11,11 @@
   "autoload": {
     "psr-4": {
       "Core\\": "core/",
-      "App\\": "app/"
+      "App\\": "app/",
+      "Lib\\": "lib/"
     }
   },
   "require": {
+    "ext-pdo": "*"
   }
 }

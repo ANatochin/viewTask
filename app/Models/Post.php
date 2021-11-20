@@ -2,19 +2,26 @@
 
 namespace App\Models;
 
-class Post
-{
-    public array $somePost = [
-        'post' =>[
-            ['name'=>'John', 'text'=> 'some text'],
-            ['name'=>'Jack', 'text'=> 'some text'],
-            ['name'=>'Mike', 'text'=> 'some text'],
-        ],
-    ];
+use App\Models\Common\MainModel;
+use Lib\DB\Select;
 
-    public function getPost(): array
+
+class Post extends MainModel
+{
+
+    public function getPosts(array $filters =[]) : array
     {
-        return $this->somePost;
+        $select = $this->selected();
+        $select->setTableNames('posts');
+        if (!empty($filters)){
+            $select->setWhereConditions('id = 14');
+        }
+
+//        $select->setWhereConditions('id = 14');
+
+        $executeResult = $select->execute();
+//        var_dump($executeResult);
+        return $executeResult;
     }
 
 }
