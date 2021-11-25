@@ -1,6 +1,6 @@
+SELECT VIEW
 
-
-<form method="POST">
+<form name="select" method="POST">
     <div>
         <label for="">Subject</label>
         <input type="text" name="subject" id="">
@@ -18,6 +18,9 @@
 
 </form>
 
+<a href="create">Create</a>
+
+
 <table border="1" solid="" cellpadding="5">
     <?php foreach ($data as $key => $row) : ?>
     <tr>
@@ -25,6 +28,8 @@
         <th><?php echo $innerKey ?>></th>
             <td><?php echo $value ?></td>
         <?php endforeach; ?>
+        <td><a href="update?id=<?=$row['id']?>">update</a></td>
+        <td><a href="delete?<?=$row['id']?>">delete</a></td>
     </tr>
     <?php endforeach; ?>
 </table>

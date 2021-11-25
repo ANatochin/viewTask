@@ -24,25 +24,26 @@ class Where
         if(is_string($this->whereConditions)) {
             $request .= $this->whereConditions;
         } elseif (is_array($this->whereConditions)) {
-            foreach ($this->whereConditions as $value) {
+            foreach ($this->whereConditions as $upperKey => $value) {
+
                 if (is_string($value)) {
                     if (!empty($request)) {
                         $request.= ' AND ';
                     }
-                    $request.=' '.$value;
+                    $request.=' '.$upperKey.' = '.'\''.$value.'\'';
                 } elseif (is_array($value)) {
                     if (!empty($request)) {
                         $request.= ' AND ';
                     }
                     foreach($value as $key=>$internalValue){
                         if(!is_int($key)){
-                            $request.=' '.$key.' = '.$internalValue;
+                            $request.=' '.$key.' = \''.$internalValue.'\'';
                         } else {
                             if(is_string($internalValue)) {
-                                $request.=' '.$internalValue;
+                                $request.=' '.'\''.$internalValue.'\'';
                             } elseif (is_array($internalValue)) {
                                 foreach ($internalValue as $insideKey => $deepInsideValue) {
-                                    $request.=' '.$insideKey.' = '.$deepInsideValue;
+                                    $request.=' '.$insideKey.' = \''.$deepInsideValue.'\'';
                                 }
                             }
                         }

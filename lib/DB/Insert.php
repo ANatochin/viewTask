@@ -2,7 +2,9 @@
 
 namespace Lib\DB;
 
-class Insert
+use Lib\DB\Common\Bridge;
+
+class Insert extends Bridge
 {
     private string $table;
     private $fields;
@@ -37,15 +39,15 @@ class Insert
         return $this->stringBuilder($this->values);
     }
 
-    public function getSqlInsert()
+    public function getSqlString() : string
     {
-        $sqlSelect = 'INSERT INTO '.$this->getTable().$this->getFields().' VALUES '.'('.$this->getValues().')';
+        $sqlSelect = 'INSERT INTO '.$this->getTable().'('.$this->getFields().')'.' VALUES '.'('.$this->getValues().')';
 
 
         return $sqlSelect;
     }
 
-    private function stringBuilder($data, $orderString=false)
+    private function stringBuilder($data)
     {
         $resultString = '';
 
@@ -61,6 +63,13 @@ class Insert
             }
         }
         return $resultString;
+    }
+    public function execute()
+    {
+        $result = $this->selectFromDB();
+        $result = $result->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
+
     }
 
 }

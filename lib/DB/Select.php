@@ -111,7 +111,6 @@ class Select extends Bridge
             $sqlSelect .= ' WHERE '.$where->getFinalWhereString();
         }
 
-
         return $sqlSelect;
     }
 
@@ -139,6 +138,7 @@ class Select extends Bridge
                 }
             }
         }
+
         return $resultString;
     }
 
@@ -147,5 +147,6 @@ class Select extends Bridge
         $result = $this->selectFromDB();
         $result = $result->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
+
     }
 }

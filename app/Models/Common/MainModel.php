@@ -18,5 +18,17 @@ class MainModel
     {
         return $this->sql->selected();
     }
+    public function update()
+    {
+        return $this->sql->update();
+    }
+    public function create()
+    {
+        return $this->sql->create();
+    }
+    public function toDelete()
+    {
+        return $this->sql->delete();
+    }
 
 }
